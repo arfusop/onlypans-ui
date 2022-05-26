@@ -1,5 +1,8 @@
+import Register from '../components/authPages/Register'
+
 const RegisterPage = () => {
-    return <div>Register</div>
+    return <Register />
 }
 
+RegisterPage.auth = true
 export default RegisterPage

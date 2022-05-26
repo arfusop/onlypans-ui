@@ -1,5 +1,8 @@
+import Login from '../components/authPages/Login'
+
 const LoginPage = () => {
-    return <div>Login</div>
+    return <Login />
 }
 
+LoginPage.auth = true
 export default LoginPage
