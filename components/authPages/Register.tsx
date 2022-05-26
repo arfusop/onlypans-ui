@@ -12,12 +12,12 @@ import {
 } from '@mui/material'
 import { AccountCircle, Visibility, VisibilityOff } from '@mui/icons-material'
 
-import { showBanner } from '../../lib/redux/bannerSlice'
+import { closeBanner, showBanner } from '../../lib/redux/bannerSlice'
 import styles from './AuthPages.module.scss'
 
 const Register = () => {
     const router = useRouter()
-    // const dispatch = useDispatch()
+    const dispatch = useDispatch()
 
     const [showPassword, setShowPassword] = useState(false)
     const [rememberMe, setRememberMe] = useState(false)
@@ -27,6 +27,25 @@ const Register = () => {
     return (
         <section className={styles.AuthPage}>
             <form>
+                <button
+                    onClick={e => {
+                        e.preventDefault()
+                        dispatch(
+                            showBanner({
+                                status: 'success',
+                                message: 'testing a message for a win'
+                            })
+                        )
+                    }}>
+                    TEST BANNER
+                </button>
+                <button
+                    onClick={e => {
+                        e.preventDefault()
+                        dispatch(closeBanner())
+                    }}>
+                    CLOSE BANNER
+                </button>
                 <h1>
                     Welcome to{' '}
                     <Link href="/" passHref>

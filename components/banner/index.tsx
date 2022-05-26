@@ -19,10 +19,11 @@ const Banner = () => {
     return (
         <Snackbar
             open={banner.status ? true : false}
-            autoHideDuration={6000}
+            autoHideDuration={1000000}
+            anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
             onClose={onCloseBanner}>
             <Alert
-                className="snacky"
+                className="BannerAlert"
                 onClose={onCloseBanner}
                 severity={banner.type}
                 sx={{ width: '100%' }}>

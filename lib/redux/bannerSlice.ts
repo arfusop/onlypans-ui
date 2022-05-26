@@ -1,28 +1,30 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-// type BannerPayload = {
-//     type: 'error' | 'warning' | 'info' | 'success'
-//     message: string
-// }
-
-const initialState = {
-    status: '',
-    message: ''
+type BannerPayload = {
+    status: 'error' | 'warning' | 'info' | 'success' | null
+    message: string | null
+}
+type BannerAction = {
+    type: string
+    payload: BannerPayload
 }
 
-// TODO
-// ADD TYPES
+const initialState: BannerPayload = {
+    status: null,
+    message: null
+}
+
 export const bannerSlice = createSlice({
     name: 'banner',
     initialState,
     reducers: {
-        showBanner: (state, action) => {
+        showBanner: (state, action: BannerAction) => {
             state.status = action.payload.status
             state.message = action.payload.message
         },
         closeBanner: state => {
-            state.status = ''
-            state.message = ''
+            state.status = null
+            state.message = null
         }
     }
 })
