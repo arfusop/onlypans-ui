@@ -1,7 +1,7 @@
 import { setContext } from '@apollo/client/link/context'
 import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client'
 
-import { JWT_SECRET } from '../utilities/constants'
+import { JWT_SECRET } from '../../utilities/constants'
 
 const uri = 'htto://localhost:5000'
 const httpLink = new HttpLink({ uri })

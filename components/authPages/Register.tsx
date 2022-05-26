@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import {
@@ -11,10 +12,12 @@ import {
 } from '@mui/material'
 import { AccountCircle, Visibility, VisibilityOff } from '@mui/icons-material'
 
+import { showBanner } from '../../lib/redux/bannerSlice'
 import styles from './AuthPages.module.scss'
 
 const Register = () => {
     const router = useRouter()
+    // const dispatch = useDispatch()
 
     const [showPassword, setShowPassword] = useState(false)
     const [rememberMe, setRememberMe] = useState(false)

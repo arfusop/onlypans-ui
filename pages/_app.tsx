@@ -1,8 +1,12 @@
-import type { AppProps } from 'next/app'
 import { ApolloProvider } from '@apollo/client'
+// import { StoreProvider } from 'easy-peasy'
+import { Provider } from 'react-redux'
 
-import { client } from '../context/apolloProvider'
+import { store } from '../lib/redux/store'
+import { client } from '../lib/context/apolloProvider'
+// import store from '../lib/easypeasy/store'
 import PageWrapper from '../components/layout/PageWrapper'
+import Banner from '../components/banner'
 import '../styles/globals.scss'
 
 const MyApp = ({
@@ -14,13 +18,18 @@ const MyApp = ({
 }) => {
     return (
         <ApolloProvider client={client}>
-            {Component.auth ? (
-                <Component {...pageProps} />
-            ) : (
-                <PageWrapper>
+            {/* <StoreProvider store={store}> */}
+            <Provider store={store}>
+                {Component.auth ? (
                     <Component {...pageProps} />
-                </PageWrapper>
-            )}
+                ) : (
+                    <PageWrapper>
+                        <Component {...pageProps} />
+                    </PageWrapper>
+                )}
+                <Banner />
+                {/* </StoreProvider> */}
+            </Provider>
         </ApolloProvider>
     )
 }
