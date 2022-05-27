@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import {
     TextField,
     InputAdornment,
@@ -9,27 +8,28 @@ import {
     FormControlLabel,
     Button
 } from '@mui/material'
-import { AccountCircle, Visibility, VisibilityOff } from '@mui/icons-material'
+import {
+    AccountCircle,
+    Visibility,
+    VisibilityOff,
+    Fastfood
+} from '@mui/icons-material'
 
 import styles from './AuthPages.module.scss'
 
 const Login = () => {
-    const router = useRouter()
-
     const [showPassword, setShowPassword] = useState(false)
     const [rememberMe, setRememberMe] = useState(false)
 
-    const onRegisterClick = () => router.push('/register')
-
     return (
         <section className={styles.AuthPage}>
+            <div className={styles.logo}>
+                <Link href="/" passHref>
+                    <Fastfood />
+                </Link>
+            </div>
             <form>
-                <h1>
-                    Welcome back to{' '}
-                    <Link href="/" passHref>
-                        OnlyPans
-                    </Link>
-                </h1>
+                <h1>Login</h1>
                 <TextField
                     label="Email"
                     InputProps={{
@@ -81,18 +81,20 @@ const Login = () => {
                         </Link>
                     </span>
                 </div>
-                <div className={styles.buttons}>
-                    <Button variant="contained" size="large">
-                        Login
-                    </Button>
-                    <Button
-                        variant="outlined"
-                        size="large"
-                        onClick={onRegisterClick}>
-                        Register Now
-                    </Button>
+                <Button variant="contained" size="large">
+                    Login
+                </Button>
+                <div className={styles.additionalInfo}>
+                    <span>
+                        New to OnlyPans?{' '}
+                        <span className={styles.authLink}>
+                            <Link href="/register" passHref>
+                                Sign Up Now
+                            </Link>
+                        </span>
+                    </span>
+                    <span>Terms & Agreements go here...</span>
                 </div>
-                <p>Terms & Agreements go here...</p>
             </form>
         </section>
     )

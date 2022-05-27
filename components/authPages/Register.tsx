@@ -1,7 +1,6 @@
 import { useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import {
     TextField,
     InputAdornment,
@@ -10,48 +9,31 @@ import {
     FormControlLabel,
     Button
 } from '@mui/material'
-import { AccountCircle, Visibility, VisibilityOff } from '@mui/icons-material'
+import {
+    AccountCircle,
+    Visibility,
+    VisibilityOff,
+    Fastfood
+} from '@mui/icons-material'
 
 import { closeBanner, showBanner } from '../../lib/redux/bannerSlice'
 import styles from './AuthPages.module.scss'
 
 const Register = () => {
-    const router = useRouter()
     const dispatch = useDispatch()
 
     const [showPassword, setShowPassword] = useState(false)
     const [rememberMe, setRememberMe] = useState(false)
 
-    const onLoginClick = () => router.push('/login')
-
     return (
         <section className={styles.AuthPage}>
+            <div className={styles.logo}>
+                <Link href="/" passHref>
+                    <Fastfood />
+                </Link>
+            </div>
             <form>
-                <button
-                    onClick={e => {
-                        e.preventDefault()
-                        dispatch(
-                            showBanner({
-                                status: 'success',
-                                message: 'testing a message for a win'
-                            })
-                        )
-                    }}>
-                    TEST BANNER
-                </button>
-                <button
-                    onClick={e => {
-                        e.preventDefault()
-                        dispatch(closeBanner())
-                    }}>
-                    CLOSE BANNER
-                </button>
-                <h1>
-                    Welcome to{' '}
-                    <Link href="/" passHref>
-                        OnlyPans
-                    </Link>
-                </h1>
+                <h1>Sign Up</h1>
                 <TextField
                     label="Email"
                     InputProps={{
@@ -87,34 +69,20 @@ const Register = () => {
                         )
                     }}
                 />
-                <div className={styles.additionalLinks}>
-                    <FormControlLabel
-                        label="Remember Me"
-                        control={
-                            <Checkbox
-                                checked={rememberMe}
-                                onChange={() => setRememberMe(!rememberMe)}
-                            />
-                        }
-                    />
-                    <span className={styles.forgotPassword}>
-                        <Link href="/forgot-password" passHref>
-                            Forgot Password?
-                        </Link>
+                <Button variant="contained" size="large">
+                    Register
+                </Button>
+                <div className={styles.additionalInfo}>
+                    <span>
+                        Already have an account?{' '}
+                        <span className={styles.authLink}>
+                            <Link href="/login" passHref>
+                                Login Now
+                            </Link>
+                        </span>
                     </span>
+                    <span>Terms & Agreements go here...</span>
                 </div>
-                <div className={styles.buttons}>
-                    <Button variant="contained" size="large">
-                        Register
-                    </Button>
-                    <Button
-                        variant="outlined"
-                        size="large"
-                        onClick={onLoginClick}>
-                        Login Now
-                    </Button>
-                </div>
-                <p>Terms & Agreements go here...</p>
             </form>
         </section>
     )
