@@ -21,18 +21,6 @@
     }
 
     form {
-        h1 {
-            text-align: center;
-            margin: 1rem 0;
-        }
-
-        h2 {
-            font-size: 1.2rem;
-            span {
-                font-size: 1rem;
-            }
-        }
-
         background-color: rgba(255, 255, 255, 0.75);
         backdrop-filter: blur(2px);
         padding: 1rem;
@@ -45,6 +33,22 @@
         padding: 2rem;
         border: 1px solid var(--light-gray);
         border-radius: 5px;
+
+        &.forgotPasswordForm {
+            height: 30vh;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            span {
+                font-size: 1rem;
+            }
+        }
 
         .inputIcon {
             cursor: inherit;

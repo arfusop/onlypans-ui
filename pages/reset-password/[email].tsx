@@ -1,5 +1,8 @@
+import ResetPassword from '../../components/authPages/ResetPassword'
+
 const PasswordReset = () => {
-    return <div>PasswordReset</div>
+    return <ResetPassword />
 }
+
 PasswordReset.auth = true
 export default PasswordReset
