@@ -1,9 +1,11 @@
 import Link from 'next/link'
 
+import Logo from '../logo'
+
 const AuthNav = () => {
     return (
         <nav>
-            <div>Logo goes here</div>
+            <Logo location="home" />
             <div>
                 <Link href="/register" passHref>
                     Register

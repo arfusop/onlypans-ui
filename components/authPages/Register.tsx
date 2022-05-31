@@ -1,41 +1,71 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import Link from 'next/link'
-import {
-    TextField,
-    InputAdornment,
-    IconButton,
-    Checkbox,
-    FormControlLabel,
-    Button
-} from '@mui/material'
-import {
-    AccountCircle,
-    Visibility,
-    VisibilityOff,
-    Fastfood
-} from '@mui/icons-material'
+import { TextField, InputAdornment, IconButton, Button } from '@mui/material'
+import { AccountCircle, Visibility, VisibilityOff } from '@mui/icons-material'
 
+import useFormValidation from './utils/hooks/useFormValidation'
+import { VALID_PASSWORD, VALID_EMAIL } from '../../utilities/regex'
 import { closeBanner, showBanner } from '../../lib/redux/bannerSlice'
 import styles from './AuthPages.module.scss'
+import Logo from '../logo'
+
+type formValueTypes = {
+    value: string
+    error: string
+}
 
 const Register = () => {
     const dispatch = useDispatch()
+    const { disabled, onValidation } = useFormValidation()
 
+    const [email, setEmail] = useState<formValueTypes>({ value: '', error: '' })
+    const [password, setPassword] = useState<formValueTypes>({
+        value: '',
+        error: ''
+    })
     const [showPassword, setShowPassword] = useState(false)
-    const [rememberMe, setRememberMe] = useState(false)
+
+    const onFieldUpdate = (e: any) => {
+        const { name, value } = e.target
+        switch (name) {
+            case 'email':
+                const newEmailValue = {
+                    value,
+                    error: VALID_EMAIL.test(value)
+                        ? ''
+                        : 'Please enter a valid email'
+                }
+                setEmail(newEmailValue)
+                onValidation([newEmailValue, password])
+                break
+            case 'password':
+                const newPasswordValue = {
+                    value,
+                    error: VALID_PASSWORD.test(value)
+                        ? ''
+                        : 'Please enter a password with at least 8 alpha-numeric digits, 1 capital letter, 1 number, and 1 special character'
+                }
+                setPassword(newPasswordValue)
+                onValidation([email, newPasswordValue])
+                break
+            default:
+                break
+        }
+    }
 
     return (
         <section className={styles.AuthPage}>
-            <div className={styles.logo}>
-                <Link href="/" passHref>
-                    <Fastfood />
-                </Link>
-            </div>
+            <Logo location="auth" />
             <form>
                 <h1>Sign Up</h1>
                 <TextField
                     label="Email"
+                    name="email"
+                    value={email.value}
+                    error={!!email.error}
+                    helperText={email.error}
+                    onChange={onFieldUpdate}
                     InputProps={{
                         endAdornment: (
                             <InputAdornment position="end">
@@ -50,6 +80,11 @@ const Register = () => {
                 />
                 <TextField
                     label="Password"
+                    name="password"
+                    error={!!password.error}
+                    helperText={password.error}
+                    value={password.value}
+                    onChange={onFieldUpdate}
                     type={showPassword ? 'text' : 'password'}
                     InputProps={{
                         endAdornment: (
@@ -69,7 +104,7 @@ const Register = () => {
                         )
                     }}
                 />
-                <Button variant="contained" size="large">
+                <Button disabled={disabled} variant="contained" size="large">
                     Register
                 </Button>
                 <div className={styles.additionalInfo}>

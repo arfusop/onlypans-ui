@@ -1,0 +1,24 @@
+.Logo {
+    width: 100%;
+    display: flex;
+
+    &.authLogo {
+        text-align: center;
+        justify-content: center;
+        margin-bottom: 2rem;
+
+        svg {
+            font-size: 5rem;
+            cursor: pointer;
+        }
+    }
+
+    &.regularLogo {
+        padding: 1rem;
+
+        svg {
+            font-size: 2.5rem;
+            cursor: pointer;
+        }
+    }
+}

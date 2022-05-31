@@ -1,10 +1,11 @@
 import { ApolloProvider } from '@apollo/client'
-import { Provider } from 'react-redux'
+import { Provider, useDispatch } from 'react-redux'
 
 import { store } from '../lib/redux/store'
 import { client } from '../lib/context/apolloProvider'
 import PageWrapper from '../components/layout/PageWrapper'
 import Banner from '../components/banner'
+import ThemeProvider from '../components/themeProvider'
 import '../styles/globals.scss'
 
 const MyApp = ({
@@ -17,14 +18,16 @@ const MyApp = ({
     return (
         <ApolloProvider client={client}>
             <Provider store={store}>
-                {Component.auth ? (
-                    <Component {...pageProps} />
-                ) : (
-                    <PageWrapper>
+                <ThemeProvider>
+                    {Component.auth ? (
                         <Component {...pageProps} />
-                    </PageWrapper>
-                )}
-                <Banner />
+                    ) : (
+                        <PageWrapper>
+                            <Component {...pageProps} />
+                        </PageWrapper>
+                    )}
+                    <Banner />
+                </ThemeProvider>
             </Provider>
         </ApolloProvider>
     )

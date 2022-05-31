@@ -1,24 +1,11 @@
 .AuthPage {
     background-image: url('../../assets/authPage-bg.jpg');
-    background-color: var(--light-gray);
+    background-color: var(--secondary-text);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
     padding-top: 10rem;
-
-    .logo {
-        width: 100%;
-        display: flex;
-        text-align: center;
-        justify-content: center;
-        margin-bottom: 2rem;
-
-        svg {
-            font-size: 5rem;
-            cursor: pointer;
-        }
-    }
 
     form {
         background-color: rgba(255, 255, 255, 0.75);
@@ -31,11 +18,11 @@
         height: 45vh;
         width: 40vw;
         padding: 2rem;
-        border: 1px solid var(--light-gray);
+        border: 1px solid var(--secondary-text);
         border-radius: 5px;
 
         &.forgotPasswordForm {
-            height: 30vh;
+            height: 35vh;
         }
 
         h1 {

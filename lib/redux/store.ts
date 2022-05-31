@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 
 import bannerSlice from './bannerSlice'
-// ...
+import themeSlice from './themeSlice'
 
 export const store = configureStore({
-    reducer: { banner: bannerSlice }
+    reducer: { banner: bannerSlice, theme: themeSlice }
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import {
     TextField,
@@ -8,15 +8,12 @@ import {
     FormControlLabel,
     Button
 } from '@mui/material'
-import {
-    AccountCircle,
-    Visibility,
-    VisibilityOff,
-    Fastfood
-} from '@mui/icons-material'
+import { AccountCircle, Visibility, VisibilityOff } from '@mui/icons-material'
 
+import useFormValidation from './utils/hooks/useFormValidation'
 import { VALID_PASSWORD, VALID_EMAIL } from '../../utilities/regex'
 import styles from './AuthPages.module.scss'
+import Logo from '../logo'
 
 type formValueTypes = {
     value: string
@@ -24,6 +21,8 @@ type formValueTypes = {
 }
 
 const Login = () => {
+    const { disabled, onValidation } = useFormValidation()
+
     const [email, setEmail] = useState<formValueTypes>({ value: '', error: '' })
     const [password, setPassword] = useState<formValueTypes>({
         value: '',
@@ -32,26 +31,6 @@ const Login = () => {
     const [showPassword, setShowPassword] = useState<boolean>(false)
     // TODO: Remember me logic
     const [rememberMe, setRememberMe] = useState<boolean>(false)
-    const [submitDisabled, setSubmitDisabled] = useState<boolean>(true)
-
-    const setIsFormValid = useCallback(() => {
-        const isEmailValid = email.value && !email.error
-        const isPasswordValid = password.value && !password.error
-
-        if (submitDisabled) {
-            if (isEmailValid && isPasswordValid) {
-                setSubmitDisabled(false)
-            }
-        } else {
-            if (!isEmailValid || !isPasswordValid) {
-                setSubmitDisabled(true)
-            }
-        }
-    }, [email, password, submitDisabled])
-
-    useEffect(() => {
-        setIsFormValid()
-    }, [setIsFormValid])
 
     const onFieldUpdate = (e: any) => {
         const { name, value } = e.target
@@ -64,6 +43,7 @@ const Login = () => {
                         : 'Please enter a valid email'
                 }
                 setEmail(newEmailValue)
+                onValidation([newEmailValue, password])
                 break
             case 'password':
                 const newPasswordValue = {
@@ -73,6 +53,7 @@ const Login = () => {
                         : 'Please enter a password with at least 8 alpha-numeric digits, 1 capital letter, 1 number, and 1 special character'
                 }
                 setPassword(newPasswordValue)
+                onValidation([email, newPasswordValue])
                 break
             default:
                 break
@@ -81,11 +62,7 @@ const Login = () => {
 
     return (
         <section className={styles.AuthPage}>
-            <div className={styles.logo}>
-                <Link href="/" passHref>
-                    <Fastfood />
-                </Link>
-            </div>
+            <Logo location="auth" />
             <form>
                 <h1>Login</h1>
                 <TextField
@@ -149,10 +126,7 @@ const Login = () => {
                         </Link>
                     </span>
                 </div>
-                <Button
-                    variant="contained"
-                    size="large"
-                    disabled={submitDisabled}>
+                <Button variant="contained" size="large" disabled={disabled}>
                     Login
                 </Button>
                 <div className={styles.additionalInfo}>

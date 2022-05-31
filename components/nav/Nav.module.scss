@@ -1,10 +1,47 @@
 .NavBar {
     width: 100vw;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: flex-end;
+    grid-gap: 1rem;
+    padding: 0 1rem;
+    background-color: var(--primary-background);
+    color: var(--primary-text);
 
-    // a:hover {
-    //     color: blue;
-    //     text-decoration: underline;
-    // }
+    .navItems {
+        width: 14rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.ThemeSwitch {
+    :global(.MuiSwitch-switchBase) {
+        height: 100%;
+    }
+
+    :global(.MuiSwitch-root) {
+        width: 5rem;
+    }
+
+    :global(.MuiSwitch-track) {
+        background-color: var(--switch-track) !important;
+        opacity: 1 !important;
+    }
+
+    .customSwitch {
+        background-color: var(--switch-thumb-wrapper);
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        svg {
+            color: var(--switch-thumb);
+        }
+    }
 }
