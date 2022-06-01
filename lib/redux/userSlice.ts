@@ -8,6 +8,11 @@ type LoginAction = {
     }
 }
 
+type RefreshUserAction = {
+    type: string
+    payload: InitialUserState
+}
+
 type InitialUserState = {
     id: number | null
     email: string
@@ -21,9 +26,10 @@ type InitialUserState = {
     bodyFat: number | null
     goalBodyFat: number | null
     activityLevel: string
+    loggedIn: boolean
 }
 
-const initialState: InitialUserState = {
+export const initialState: InitialUserState = {
     id: null,
     email: '',
     password: '',
@@ -35,7 +41,8 @@ const initialState: InitialUserState = {
     goalWeight: null,
     bodyFat: null,
     goalBodyFat: null,
-    activityLevel: ''
+    activityLevel: '',
+    loggedIn: false
 }
 
 export const userSlice = createSlice({
@@ -45,6 +52,21 @@ export const userSlice = createSlice({
         login: (state, action: LoginAction) => {
             state.email = action.payload.email
             state.id = action.payload.id
+            state.loggedIn = true
+        },
+        refreshUser: (state, action: RefreshUserAction) => {
+            state.email = action.payload.email
+            state.id = action.payload.id
+            state.firstName = action.payload.firstName
+            state.lastName = action.payload.lastName
+            state.dob = action.payload.dob
+            state.height = action.payload.height
+            state.weight = action.payload.weight
+            state.goalWeight = action.payload.goalWeight
+            state.bodyFat = action.payload.bodyFat
+            state.goalBodyFat = action.payload.goalBodyFat
+            state.activityLevel = action.payload.activityLevel
+            state.loggedIn = true
         },
         logout: state => {
             state = initialState
@@ -53,6 +75,6 @@ export const userSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { login, logout } = userSlice.actions
+export const { login, logout, refreshUser } = userSlice.actions
 
 export default userSlice.reducer

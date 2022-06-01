@@ -22,6 +22,7 @@ const ButtonWithLoader = ({
             disabled={disabled}
             loading={loading}
             loadingPosition="end"
+            endIcon={null}
             onClick={onSubmit}>
             {text}
         </LoadingButton>
