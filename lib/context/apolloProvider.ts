@@ -3,7 +3,7 @@ import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client'
 
 import { JWT_SECRET } from '../../utilities/constants'
 
-const uri = 'htto://localhost:5000'
+const uri = 'http://localhost:5001'
 const httpLink = new HttpLink({ uri })
 const authLink = setContext((_, { headers }) => {
     const token = localStorage.getItem(JWT_SECRET)
