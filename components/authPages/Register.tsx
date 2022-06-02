@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { TextField, InputAdornment, IconButton, Button } from '@mui/material'
 import { AccountCircle, Visibility, VisibilityOff } from '@mui/icons-material'
 
+import ButtonWithLoader from './ButtonWithLoader'
 import useFormValidation from './utils/hooks/useFormValidation'
 import { VALID_PASSWORD, VALID_EMAIL } from '../../utilities/regex'
 import { closeBanner, showBanner } from '../../lib/redux/bannerSlice'
@@ -104,9 +105,11 @@ const Register = () => {
                         )
                     }}
                 />
-                <Button disabled={disabled} variant="contained" size="large">
-                    Register
-                </Button>
+                <ButtonWithLoader
+                    disabled={disabled}
+                    loading={false}
+                    text="Register"
+                />
                 <div className={styles.additionalInfo}>
                     <span>
                         Already have an account?{' '}

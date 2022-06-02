@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Switch } from '@mui/material'
 import { ModeNight, Brightness7 } from '@mui/icons-material'
 
@@ -8,14 +8,15 @@ import styles from './Nav.module.scss'
 
 const ThemeSwitch = () => {
     const dispatch = useDispatch()
+    const theme = useSelector((state: any) => state.theme.mode)
 
     const onThemeChange = (e: any) => {
         if (e.target.checked) {
-            dispatch(setTheme(DARK))
+            dispatch(setTheme({ theme: DARK }))
             document.querySelector('html')?.setAttribute('data-theme', DARK)
             localStorage.setItem(STORED_THEME_KEY, DARK)
         } else {
-            dispatch(setTheme(LIGHT))
+            dispatch(setTheme({ theme: LIGHT }))
             document.querySelector('html')?.setAttribute('data-theme', LIGHT)
             localStorage.setItem(STORED_THEME_KEY, LIGHT)
         }
@@ -25,6 +26,7 @@ const ThemeSwitch = () => {
         <div className={styles.ThemeSwitch}>
             <Switch
                 disableRipple
+                checked={theme === DARK}
                 onChange={onThemeChange}
                 icon={
                     <div className={styles.customSwitch}>
