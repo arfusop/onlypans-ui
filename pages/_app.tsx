@@ -1,5 +1,7 @@
 import { ApolloProvider } from '@apollo/client'
-import { Provider, useDispatch } from 'react-redux'
+import { Provider } from 'react-redux'
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 
 import { store } from '../lib/redux/store'
 import { client } from '../lib/context/apolloProvider'
@@ -19,14 +21,16 @@ const MyApp = ({
         <ApolloProvider client={client}>
             <Provider store={store}>
                 <ThemeProvider>
-                    {Component.auth ? (
-                        <Component {...pageProps} />
-                    ) : (
-                        <PageWrapper>
+                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                        {Component.auth ? (
                             <Component {...pageProps} />
-                        </PageWrapper>
-                    )}
-                    <Banner />
+                        ) : (
+                            <PageWrapper>
+                                <Component {...pageProps} />
+                            </PageWrapper>
+                        )}
+                        <Banner />
+                    </LocalizationProvider>
                 </ThemeProvider>
             </Provider>
         </ApolloProvider>

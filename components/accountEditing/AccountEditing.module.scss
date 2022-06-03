@@ -1,0 +1,30 @@
+@import '/styles/mixins.scss';
+
+.EditAccountSection {
+    @include pageWithNavSpacing;
+    .datePicker {
+        display: inline-flex;
+    }
+    .mobileDatePicker {
+        display: none;
+    }
+
+    .twoCols {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .threeCols {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @media screen and (max-width: 750px) {
+        .datePicker {
+            display: none;
+        }
+        .mobileDatePicker {
+            display: inline-flex;
+        }
+    }
+}
