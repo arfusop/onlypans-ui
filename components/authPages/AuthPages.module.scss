@@ -7,7 +7,7 @@
     height: 100vh;
     padding-top: 10rem;
 
-    form {
+    @mixin formCard {
         background-color: rgba(255, 255, 255, 0.75);
         backdrop-filter: blur(2px);
         padding: 1rem;
@@ -21,13 +21,33 @@
         border: 1px solid var(--secondary-text);
         border-radius: 5px;
 
-        &.forgotPasswordForm {
-            height: 35vh;
-        }
-
         h1 {
             text-align: center;
             margin: 1rem 0;
+        }
+    }
+
+    .successDisplay {
+        @include formCard;
+
+        h1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            svg {
+                color: green;
+                font-size: 2rem;
+                margin-right: 1rem;
+            }
+        }
+    }
+
+    form {
+        @include formCard;
+
+        &.forgotPasswordForm {
+            height: 35vh;
         }
 
         h2 {

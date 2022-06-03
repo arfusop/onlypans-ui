@@ -19,3 +19,11 @@ export const REGISTER_USER = gql`
         }
     }
 `
+
+export const FORGOT_PASSWORD = gql`
+    mutation forgotPassword($email: String!) {
+        sendPasswordResetEmail(email: $email) {
+            id
+        }
+    }
+`
