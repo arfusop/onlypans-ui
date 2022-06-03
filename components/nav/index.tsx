@@ -5,8 +5,7 @@ import AuthNav from './AuthNav'
 
 const NavBar = () => {
     const user = useSelector((state: any) => state.user)
-
-    if (!user?.id) {
+    if (!user?.loggedIn) {
         return <Nav />
     }
 

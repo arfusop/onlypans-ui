@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Dashboard, Logout } from '@mui/icons-material'
 import { useDispatch } from 'react-redux'
+import { useRouter } from 'next/router'
 
 import { JWT_SECRET } from '../../utilities/constants'
 import { logout } from '../../lib/redux/userSlice'
@@ -9,11 +10,13 @@ import Logo from '../logo'
 import styles from './Nav.module.scss'
 
 const AuthNav = () => {
+    const router = useRouter()
     const dispatch = useDispatch()
 
     const onLogoutClick = () => {
-        logout()
         localStorage.removeItem(JWT_SECRET)
+        dispatch(logout())
+        router.push('/')
     }
 
     return (
