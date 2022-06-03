@@ -80,7 +80,8 @@ const Register = () => {
         }
     })
 
-    const onSubmit = () => {
+    const onSubmit = (e: any) => {
+        e.preventDefault()
         setLoading(true)
         handleRegister()
     }
@@ -88,7 +89,7 @@ const Register = () => {
     return (
         <section className={styles.AuthPage}>
             <Logo location="auth" />
-            <form>
+            <form onSubmit={onSubmit}>
                 <h1>Sign Up</h1>
                 <TextField
                     label="Email"
@@ -139,7 +140,6 @@ const Register = () => {
                     disabled={disabled}
                     loading={loading}
                     text="Register"
-                    onSubmit={onSubmit}
                 />
                 <div className={styles.additionalInfo}>
                     <span>

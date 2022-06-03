@@ -5,25 +5,18 @@ type ButtonTypes = {
     disabled: boolean
     loading: boolean
     text: string
-    onSubmit: any // TODO: Figure out how to TS this material bs...
-    // onSubmit: MouseEventHandler<HTMLAnchorElement>
 }
 
-const ButtonWithLoader = ({
-    disabled,
-    loading,
-    text,
-    onSubmit
-}: ButtonTypes) => {
+const ButtonWithLoader = ({ disabled, loading, text }: ButtonTypes) => {
     return (
         <LoadingButton
             variant="contained"
             size="large"
+            type="submit"
             disabled={disabled}
             loading={loading}
             loadingPosition="end"
-            endIcon={null}
-            onClick={onSubmit}>
+            endIcon={null}>
             {text}
         </LoadingButton>
     )

@@ -89,7 +89,8 @@ const Login = () => {
         }
     })
 
-    const onSubmit = () => {
+    const onSubmit = (e: any) => {
+        e.preventDefault()
         setLoading(true)
         handleLogin()
     }
@@ -97,7 +98,7 @@ const Login = () => {
     return (
         <section className={styles.AuthPage}>
             <Logo location="auth" />
-            <form>
+            <form onSubmit={onSubmit}>
                 <h1>Login</h1>
                 <TextField
                     label="Email"
@@ -164,7 +165,6 @@ const Login = () => {
                     disabled={disabled}
                     text="Login"
                     loading={loading}
-                    onSubmit={onSubmit}
                 />
                 <div className={styles.additionalInfo}>
                     <span>
