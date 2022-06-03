@@ -27,3 +27,19 @@ export const FORGOT_PASSWORD = gql`
         }
     }
 `
+
+export const RESET_PASSWORD = gql`
+    mutation resetPassword(
+        $email: String!
+        $password: String!
+        $newPassword: String!
+    ) {
+        updatePassword(
+            email: $email
+            password: $password
+            newPassword: $newPassword
+        ) {
+            id
+        }
+    }
+`
