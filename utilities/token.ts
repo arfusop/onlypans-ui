@@ -12,6 +12,7 @@ type InitialUserState = {
     dob: Date | null
     height: number | null
     weight: number | null
+    gender: string
     goalWeight: number | null
     bodyFat: number | null
     goalBodyFat: number | null
