@@ -9,14 +9,33 @@
         display: none;
     }
 
-    .twoCols {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 1rem;
 
-    .threeCols {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        h1,
+        p {
+            margin: 0;
+        }
+
+        .formRow {
+            display: grid;
+            grid-gap: 1rem;
+        }
+
+        .twoCols {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .threeCols {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .fourCols {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
     }
 
     @media screen and (max-width: 750px) {

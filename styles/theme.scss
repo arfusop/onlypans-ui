@@ -4,6 +4,8 @@
     --off-accent: #ffda30;
     --border-radius: 10px;
 
+    --nav-height: 4.5rem;
+    --page-content-height: calc(100vh - var(--nav-height));
     --mobile-page-margin: 2.5rem;
     --mobile-nav-element-width: 40vw;
 }

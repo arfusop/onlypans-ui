@@ -1,10 +1,11 @@
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
 
 import { setTheme } from '../../lib/redux/themeSlice'
 import { STORED_THEME_KEY, DARK, LIGHT } from '../../utilities/constants'
 
-const ThemeProvider = ({ children }: { children: any }) => {
+const ThemeWrapper = ({ children }: { children: any }) => {
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -14,7 +15,55 @@ const ThemeProvider = ({ children }: { children: any }) => {
         dispatch(setTheme({ theme: currentTheme }))
     }, [])
 
-    return <main>{children}</main>
+    // const lightTheme = createTheme({
+    //     palette: {
+    //         type: 'light',
+    //         primary: {
+    //           main: '#90caf9',
+    //         },
+    //         secondary: {
+    //           main: '#f48fb1',
+    //         },
+    //         background: {
+    //           default: '#212121',
+    //           paper: '#424242',
+    //         },
+    //       },
+    // })
+
+    // const theme = createTheme({
+    //     palette: {
+    //       primary: {
+    //         main: orange[500],
+    //       },
+    //     },
+    //   });
+
+    // import { ThemeOptions } from '@material-ui/core/styles/createMuiTheme';
+
+    // export const themeOptions: ThemeOptions = {
+    //   palette: {
+    //     type: 'dark',
+    //     primary: {
+    //       main: '#90caf9',
+    //     },
+    //     secondary: {
+    //       main: '#f48fb1',
+    //     },
+    //     background: {
+    //       default: '#212121',
+    //       paper: '#424242',
+    //     },
+    //   },
+    // };
+
+    return (
+        <main>
+            {/* <ThemeProvider> */}
+            {children}
+            {/* </ThemeProvider> */}
+        </main>
+    )
 }
 
-export default ThemeProvider
+export default ThemeWrapper

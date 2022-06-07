@@ -11,7 +11,7 @@ import {
 import { Visibility, VisibilityOff, CheckCircle } from '@mui/icons-material'
 import { useMutation } from '@apollo/client'
 
-import { decodeResetPwToken } from '../../utilities/token'
+import { decodeProvidedToken } from '../../utilities/token'
 import { showBanner } from '../../lib/redux/bannerSlice'
 import { RESET_PASSWORD } from '../../lib/graphql/mutations/user'
 import ButtonWithLoader from './ButtonWithLoader'
@@ -53,7 +53,7 @@ const ResetPassword = () => {
 
     useEffect(() => {
         if (router.query.token) {
-            const decoded = decodeResetPwToken(router.query.token as string)
+            const decoded = decodeProvidedToken(router.query.token as string)
 
             if (!decoded.email ?? !decoded.password) {
                 dispatch(

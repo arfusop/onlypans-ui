@@ -1,4 +1,3 @@
-import { MouseEventHandler } from 'react'
 import { LoadingButton } from '@mui/lab'
 
 type ButtonTypes = {
@@ -14,9 +13,7 @@ const ButtonWithLoader = ({ disabled, loading, text }: ButtonTypes) => {
             size="large"
             type="submit"
             disabled={disabled}
-            loading={loading}
-            loadingPosition="end"
-            endIcon={null}>
+            loading={loading}>
             {text}
         </LoadingButton>
     )

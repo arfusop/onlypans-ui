@@ -1,7 +1,4 @@
 type InitialUserState = {
-    id: number | null
-    email: string
-    password: string
     firstName: string
     lastName: string
     dob: Date | null
@@ -16,9 +13,6 @@ type InitialUserState = {
 }
 
 export const initialState: InitialUserState = {
-    id: null,
-    email: '',
-    password: '',
     firstName: '',
     lastName: '',
     dob: null,

@@ -37,7 +37,7 @@ export const decodeToken = (): InitialUserState => {
     return initialState
 }
 
-export const decodeResetPwToken = (token: any): InitialUserState => {
+export const decodeProvidedToken = (token: any): InitialUserState => {
     const decodedToken: any = jwtDecode(token)
 
     if (decodedToken.exp * 1000 < Date.now()) {

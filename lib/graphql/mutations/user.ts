@@ -43,3 +43,35 @@ export const RESET_PASSWORD = gql`
         }
     }
 `
+
+export const UPDATE_USER = gql`
+    mutation updateUser(
+        $email: String!
+        $firstName: String
+        $lastName: String
+        $dob: Date
+        $gender: String
+        $height: Float
+        $weight: Float
+        $goalWeight: Float
+        $bodyFat: Float
+        $goalBodyFat: Float
+        $activityLevel: String
+    ) {
+        updateUser(
+            email: $email
+            firstName: $firstName
+            lastName: $lastName
+            dob: $dob
+            gender: $gender
+            height: $height
+            weight: $weight
+            goalWeight: $goalWeight
+            bodyFat: $bodyFat
+            goalBodyFat: $goalBodyFat
+            activityLevel: $activityLevel
+        ) {
+            token
+        }
+    }
+`

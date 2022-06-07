@@ -31,7 +31,7 @@ const PageWrapper = ({ children }: { children: any }) => {
     return (
         <section className={styles.PageWrapper}>
             <NavBar />
-            <div>{children}</div>
+            <div className={styles.pageContent}>{children}</div>
         </section>
     )
 }

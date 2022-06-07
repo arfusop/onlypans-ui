@@ -1,5 +1,6 @@
 .NavBar {
     width: 100vw;
+    height: 4.5rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
@@ -8,6 +9,8 @@
     padding: 0 1rem;
     background-color: var(--primary-background);
     color: var(--primary-text);
+    position: absolute;
+    top: 0;
 
     .navItems {
         width: 14rem;
