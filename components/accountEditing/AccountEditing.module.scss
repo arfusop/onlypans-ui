@@ -1,0 +1,49 @@
+@import '/styles/mixins.scss';
+
+.EditAccountSection {
+    @include pageWithNavSpacing;
+    .datePicker {
+        display: inline-flex;
+    }
+    .mobileDatePicker {
+        display: none;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 1rem;
+
+        h1,
+        p {
+            margin: 0;
+        }
+
+        .formRow {
+            display: grid;
+            grid-gap: 1rem;
+        }
+
+        .twoCols {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .threeCols {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .fourCols {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+    }
+
+    @media screen and (max-width: 750px) {
+        .datePicker {
+            display: none;
+        }
+        .mobileDatePicker {
+            display: inline-flex;
+        }
+    }
+}

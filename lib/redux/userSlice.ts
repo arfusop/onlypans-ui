@@ -20,6 +20,7 @@ type InitialUserState = {
     firstName: string
     lastName: string
     dob: Date | null
+    gender: string
     height: number | null
     weight: number | null
     goalWeight: number | null
@@ -36,6 +37,7 @@ export const initialState: InitialUserState = {
     firstName: '',
     lastName: '',
     dob: null,
+    gender: '',
     height: null,
     weight: null,
     goalWeight: null,

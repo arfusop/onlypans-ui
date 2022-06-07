@@ -12,6 +12,7 @@ type InitialUserState = {
     dob: Date | null
     height: number | null
     weight: number | null
+    gender: string
     goalWeight: number | null
     bodyFat: number | null
     goalBodyFat: number | null
@@ -36,7 +37,7 @@ export const decodeToken = (): InitialUserState => {
     return initialState
 }
 
-export const decodeResetPwToken = (token: any): InitialUserState => {
+export const decodeProvidedToken = (token: any): InitialUserState => {
     const decodedToken: any = jwtDecode(token)
 
     if (decodedToken.exp * 1000 < Date.now()) {

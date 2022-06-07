@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Dashboard, Logout } from '@mui/icons-material'
+import { Dashboard, Logout, AccountCircle } from '@mui/icons-material'
 import { useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
 
@@ -26,6 +26,9 @@ const AuthNav = () => {
                 <ThemeSwitch />
                 <Link href="/dashboard" passHref>
                     <Dashboard />
+                </Link>
+                <Link href="/account" passHref>
+                    <AccountCircle />
                 </Link>
                 <Logout onClick={onLogoutClick} />
             </div>

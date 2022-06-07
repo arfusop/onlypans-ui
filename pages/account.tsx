@@ -1,5 +1,7 @@
+import EditAccount from '../components/accountEditing'
+
 const AccountPage = () => {
-    return <div>AccountPage</div>
+    return <EditAccount />
 }
 
 export default AccountPage

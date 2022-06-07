@@ -1,4 +1,9 @@
 .PageWrapper {
-    height: 100vh;
     width: 100vw;
+
+    .pageContent {
+        height: var(--page-content-height);
+        padding: 1rem;
+        margin-top: var(--nav-height);
+    }
 }
