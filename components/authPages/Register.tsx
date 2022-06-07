@@ -10,7 +10,7 @@ import { REGISTER_USER } from '../../lib/graphql/mutations/user'
 import ButtonWithLoader from './ButtonWithLoader'
 import useFormValidation from './utils/hooks/useFormValidation'
 import { VALID_PASSWORD, VALID_EMAIL } from '../../utilities/regex'
-import { closeBanner, showBanner } from '../../lib/redux/bannerSlice'
+import { showBanner } from '../../lib/redux/bannerSlice'
 import { register } from '../../lib/redux/userSlice'
 
 import { JWT_SECRET } from '../../utilities/constants'

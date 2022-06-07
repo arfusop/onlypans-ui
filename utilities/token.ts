@@ -30,9 +30,21 @@ export const decodeToken = (): InitialUserState => {
         }
         delete decodedToken.exp
         delete decodedToken.iat
-
         return decodedToken
     }
 
     return initialState
+}
+
+export const decodeResetPwToken = (token: any): InitialUserState => {
+    const decodedToken: any = jwtDecode(token)
+
+    if (decodedToken.exp * 1000 < Date.now()) {
+        return initialState
+    }
+
+    delete decodedToken.exp
+    delete decodedToken.iat
+
+    return decodedToken
 }
