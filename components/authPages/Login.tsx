@@ -9,7 +9,6 @@ import {
     FormControlLabel
 } from '@mui/material'
 import { useDispatch } from 'react-redux'
-
 import { AccountCircle, Visibility, VisibilityOff } from '@mui/icons-material'
 import { useMutation } from '@apollo/client'
 
@@ -18,7 +17,7 @@ import useFormValidation from './utils/hooks/useFormValidation'
 import { LOGIN_USER } from '../../lib/graphql/mutations/user'
 import { VALID_PASSWORD, VALID_EMAIL } from '../../utilities/regex'
 
-import { login } from '../../lib/redux/userSlice'
+import { refreshUser } from '../../lib/redux/userSlice'
 import { showBanner } from '../../lib/redux/bannerSlice'
 
 import { JWT_SECRET } from '../../utilities/constants'
@@ -77,7 +76,7 @@ const Login = () => {
         onCompleted({ login: data }) {
             localStorage.setItem(JWT_SECRET, data.token)
             setLoading(false)
-            dispatch(login(data))
+            dispatch(refreshUser(data))
             router.push('/dashboard')
         },
         onError(err: any) {
@@ -90,7 +89,8 @@ const Login = () => {
         }
     })
 
-    const onSubmit = () => {
+    const onSubmit = (e: any) => {
+        e.preventDefault()
         setLoading(true)
         handleLogin()
     }
@@ -98,7 +98,7 @@ const Login = () => {
     return (
         <section className={styles.AuthPage}>
             <Logo location="auth" />
-            <form>
+            <form onSubmit={onSubmit}>
                 <h1>Login</h1>
                 <TextField
                     label="Email"
@@ -165,7 +165,6 @@ const Login = () => {
                     disabled={disabled}
                     text="Login"
                     loading={loading}
-                    onSubmit={onSubmit}
                 />
                 <div className={styles.additionalInfo}>
                     <span>

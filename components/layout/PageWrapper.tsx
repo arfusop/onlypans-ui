@@ -13,7 +13,7 @@ const PageWrapper = ({ children }: { children: any }) => {
     useEffect(() => {
         if (!user.loggedIn) {
             const token = decodeToken()
-            if (token) {
+            if (token?.id) {
                 dispatch(refreshUser(token))
             }
         }
