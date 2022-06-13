@@ -71,6 +71,17 @@ export const UPDATE_USER = gql`
             goalBodyFat: $goalBodyFat
             activityLevel: $activityLevel
         ) {
+            email
+            firstName
+            lastName
+            dob
+            gender
+            height
+            weight
+            goalWeight
+            bodyFat
+            goalBodyFat
+            activityLevel
             token
         }
     }

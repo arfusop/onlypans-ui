@@ -14,7 +14,6 @@ import { refreshUser } from '../../lib/redux/userSlice'
 import { UPDATE_USER } from '../../lib/graphql/mutations/user'
 
 import { JWT_SECRET } from '../../utilities/constants'
-import { decodeProvidedToken } from '../../utilities/token'
 import { FLOAT_WITH_2_DIGITS } from '../../utilities/regex'
 import {
     reducer,
@@ -87,8 +86,9 @@ const EditAccount = () => {
     const [updateUser] = useMutation(UPDATE_USER, {
         onCompleted({ updateUser: data }) {
             localStorage.setItem(JWT_SECRET, data.token)
-            const decoded = decodeProvidedToken(data.token)
-            reduxDispatch(refreshUser(decoded))
+            const refreshedData = { ...data }
+            delete refreshedData.token
+            reduxDispatch(refreshUser(refreshedData))
             setLoading(false)
             reduxDispatch(
                 showBanner({

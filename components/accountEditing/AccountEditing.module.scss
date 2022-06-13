@@ -14,6 +14,8 @@
         flex-direction: column;
         justify-content: space-between;
         gap: 1rem;
+        max-width: 1200px;
+        margin: auto;
 
         h1,
         p {
@@ -44,6 +46,14 @@
         }
         .mobileDatePicker {
             display: inline-flex;
+        }
+
+        form {
+            .twoCols,
+            .threeCols,
+            .fourCols {
+                grid-template-columns: 1fr;
+            }
         }
     }
 }

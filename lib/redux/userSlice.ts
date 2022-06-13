@@ -57,11 +57,19 @@ export const userSlice = createSlice({
             state.loggedIn = true
         },
         refreshUser: (state: any, action: RefreshUserAction) => {
-            for (const [key, value] of Object.entries(action.payload)) {
-                if (key === '__typename' || key === 'token') return
-
-                state[key] = value
-            }
+            state.id = action.payload.id
+            state.email = action.payload?.email ?? ''
+            state.password = action.payload?.password ?? ''
+            state.firstName = action.payload?.firstName ?? ''
+            state.lastName = action.payload?.lastName ?? ''
+            state.dob = action.payload?.dob ?? null
+            state.gender = action.payload?.gender ?? ''
+            state.height = action.payload?.height ?? null
+            state.weight = action.payload?.weight ?? null
+            state.goalWeight = action.payload?.goalWeight ?? null
+            state.bodyFat = action.payload?.bodyFat ?? null
+            state.goalBodyFat = action.payload?.goalBodyFat ?? null
+            state.activityLevel = action.payload?.activityLevel ?? ''
             state.loggedIn = true
         },
         logout: (state: any) => {
