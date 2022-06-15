@@ -7,7 +7,7 @@ import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker'
 import { useMutation } from '@apollo/client'
 
 import ButtonWithLoader from '../authPages/ButtonWithLoader'
-import SelectField from '../form/SelectField'
+import { SelectField } from '../form/SelectField'
 
 import { showBanner } from '../../lib/redux/bannerSlice'
 import { refreshUser } from '../../lib/redux/userSlice'

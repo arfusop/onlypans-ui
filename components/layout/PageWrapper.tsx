@@ -43,7 +43,7 @@ const PageWrapper = ({ children }: { children: any }) => {
         <section className={styles.PageWrapper}>
             <NavBar />
             <div className={styles.pageContent}>{children}</div>
-            <footer>testing</footer>
+            {/* <footer>testing</footer> */}
         </section>
     )
 }

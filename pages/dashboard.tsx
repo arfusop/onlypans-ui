@@ -1,5 +1,7 @@
+import RecipeDashboard from '../components/recipes/dashboard'
+
 const DashboardPage = () => {
-    return <div>DashboardPage</div>
+    return <RecipeDashboard />
 }
 
 export default DashboardPage
