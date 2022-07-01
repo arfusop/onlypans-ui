@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Link from 'next/link'
 import { IconButton } from '@mui/material'
 import { AddCircle } from '@mui/icons-material'
 import { TextField } from '@mui/material'
@@ -24,9 +25,11 @@ const RecipeDashboard = () => {
             <div className={styles.header}>
                 <div className={styles.message}>
                     <span>Your Recipes</span>
-                    <IconButton>
-                        <AddCircle />
-                    </IconButton>
+                    <Link href="/recipes/add" passHref>
+                        <IconButton>
+                            <AddCircle />
+                        </IconButton>
+                    </Link>
                 </div>
                 <div className={styles.filterFields}>
                     <SelectMultipleField

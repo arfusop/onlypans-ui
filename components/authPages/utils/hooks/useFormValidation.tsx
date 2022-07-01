@@ -8,6 +8,7 @@ type FormItemsType = {
 type ReturnTypes = {
     disabled: boolean
     onValidation: Function
+    reset: Function
 }
 
 export default function (): ReturnTypes {
@@ -27,5 +28,9 @@ export default function (): ReturnTypes {
         }
     }, [])
 
-    return { disabled, onValidation: onSubmitDisabledCheck }
+    return {
+        disabled,
+        onValidation: onSubmitDisabledCheck,
+        reset: () => setDisabled(false)
+    }
 }

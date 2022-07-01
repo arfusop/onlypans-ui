@@ -1,37 +1,35 @@
-type InitialUserState = {
-    firstName: string
-    lastName: string
-    dob: Date | null
-    gender: string
-    height: string
-    weight: string
-    goalWeight: string
-    bodyFat: string
-    goalBodyFat: string
-    activityLevel: string
-    errors: any
-}
-
-export const initialState: InitialUserState = {
-    firstName: '',
-    lastName: '',
-    dob: null,
-    gender: '',
-    height: '',
-    weight: '',
-    goalWeight: '',
-    bodyFat: '',
-    goalBodyFat: '',
-    activityLevel: '',
-    errors: {}
-}
-
 import {
     UPDATE,
     REPLACE,
     ADD_ERROR,
     REMOVE_ERROR
-} from '../../utilities/constants'
+} from '../../../utilities/constants'
+
+type InitialRecipeFormState = {
+    rating: number | null
+    skill: number | null
+    name: string
+    servings: number | null
+    ingredients: string[]
+    directions: string[]
+    notes: string[]
+    category: string
+    prepTime: string | null
+    cookTime: string | null
+}
+
+export const initialState: InitialRecipeFormState = {
+    rating: null,
+    skill: null,
+    name: '',
+    servings: null,
+    ingredients: [],
+    prepTime: null,
+    cookTime: null,
+    directions: [],
+    notes: [],
+    category: ''
+}
 
 type actionType = {
     type: string

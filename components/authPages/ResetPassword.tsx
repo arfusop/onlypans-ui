@@ -80,7 +80,6 @@ const ResetPassword = () => {
         },
         variables: {
             email: token.email,
-            password: token.password,
             newPassword: confirmPassword.value
         }
     })

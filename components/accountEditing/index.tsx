@@ -15,14 +15,13 @@ import { UPDATE_USER } from '../../lib/graphql/mutations/user'
 
 import { JWT_SECRET } from '../../utilities/constants'
 import { FLOAT_WITH_2_DIGITS } from '../../utilities/regex'
+import { reducer, initialState } from './store'
 import {
-    reducer,
-    initialState,
     UPDATE,
     REPLACE,
     ADD_ERROR,
     REMOVE_ERROR
-} from './store'
+} from '../../utilities/constants'
 import styles from './AccountEditing.module.scss'
 
 const EditAccount = () => {

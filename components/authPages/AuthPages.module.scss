@@ -8,7 +8,7 @@
     padding-top: 10rem;
 
     @mixin formCard {
-        background-color: rgba(255, 255, 255, 0.75);
+        background-color: var(--frosted-card);
         backdrop-filter: blur(2px);
         padding: 1rem;
         display: flex;

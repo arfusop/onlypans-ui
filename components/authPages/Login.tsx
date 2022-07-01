@@ -32,7 +32,7 @@ type formValueTypes = {
 const Login = () => {
     const router = useRouter()
     const dispatch = useDispatch()
-    const { disabled, onValidation } = useFormValidation()
+    const { disabled, onValidation, reset } = useFormValidation()
 
     const [email, setEmail] = useState<formValueTypes>({ value: '', error: '' })
     const [password, setPassword] = useState<formValueTypes>({
@@ -77,10 +77,12 @@ const Login = () => {
             localStorage.setItem(JWT_SECRET, data.token)
             setLoading(false)
             dispatch(refreshUser(data))
+            reset()
             router.push('/dashboard')
         },
         onError(err: any) {
             setLoading(false)
+            reset()
             dispatch(showBanner({ status: 'error', message: err.message }))
         },
         variables: {
